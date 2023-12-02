@@ -1,0 +1,177 @@
+.first-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.menu-burger-icon {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.side-menu {
+    width: 250px;
+    height: 100%;
+    font-size: 1.2em;
+    position: fixed;
+    background-color: lightcoral;
+    z-index: 1;
+    overflow: hidden;
+
+}
+
+.side-menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0;
+}
+
+.side-menu-list li {
+    margin: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    font-size: 25px;
+    right: 10px;
+    top: 10px;
+
+}
+
+.logo {
+    width: 100px;
+    cursor: pointer;
+}
+
+.logo-area {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.login-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 17px;
+}
+
+.login {
+    cursor: pointer;
+    margin-right: 30px;
+
+}
+
+.login-icon {
+    margin-right: 5px;
+}
+
+.menus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    margin: 10px;
+}
+
+.menu-area {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-size: 17px;
+
+}
+
+.search-area {
+    position: absolute;
+    right: 30px;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 17px;
+    width: 200px;
+
+}
+
+.search-icon {
+    margin-right: 3px;
+}
+
+.login-form-area {
+    display: flex;
+    justify-content: center;
+
+}
+
+.login-form {
+    width: 40em;
+}
+
+.product-card:hover {
+    scale: 1.1;
+    z-index: 1;
+}
+
+.product-card img {
+    width: 100%;
+}
+
+.product-detail img{
+    width: 100%;
+    margin-right: 10px;
+}
+.product-img {
+    width: 260px;
+    height: 100%;
+}
+
+
+.choice {
+    font-size: 0.8em;
+    color: darkgreen;
+}
+
+.new {
+    font-size: 0.8em;
+
+}
+
+.product-text div {
+    margin-bottom: 2px;
+}
+
+
+#dropdown-basic {
+    margin-top: 10px;
+}
+
+.product-add-btn {
+    margin-top: 20px;
+    width: 500px;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 63rem) {
+    .menu-area {
+        display: none;
+    }
+
+    .hide {
+        display: inline;
+    }
+}
