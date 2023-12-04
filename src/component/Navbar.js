@@ -1,18 +1,17 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { authenticateActions } from "../redux/reducers/authenticateReducer";
 
-const Navbar = ({
-  loginState,
-  setLoginState,
-  authenticate,
-  setAuthenticate,
-}) => {
+const Navbar = ({ loginState, setLoginState }) => {
+  const authenticate = useSelector((state) => state.auth.authenticate);
   const navigate = useNavigate();
-  const [width, setWidth] = useState(0)
+  const dispatch = useDispatch();
+  const [width, setWidth] = useState(0);
 
   const goToLoginPage = () => {
     navigate("/login");
@@ -23,7 +22,7 @@ const Navbar = ({
   };
 
   const logOut = () => {
-    setAuthenticate(false);
+    dispatch(authenticateActions.logout());
     setLoginState("로그인");
   };
 
@@ -40,17 +39,25 @@ const Navbar = ({
 
   return (
     <div>
-      <div className="side-menu" style={{width: width}}>
-        <FontAwesomeIcon className="close-btn" icon={faXmark} onClick={()=> setWidth(0)}/>
+      <div className="side-menu" style={{ width: width }}>
+        <FontAwesomeIcon
+          className="close-btn"
+          icon={faXmark}
+          onClick={() => setWidth(0)}
+        />
         <ul className="side-menu-list">
-          {menus.map((i)=>(
+          {menus.map((i) => (
             <li>{i}</li>
           ))}
-        </ul>        
+        </ul>
       </div>
       <div className="first-line">
         <div>
-          <FontAwesomeIcon icon={faBars} className="menu-burger-icon hide" onClick={()=> setWidth(250)}/>
+          <FontAwesomeIcon
+            icon={faBars}
+            className="menu-burger-icon hide"
+            onClick={() => setWidth(250)}
+          />
         </div>
         <div className="login-area">
           <div

@@ -4,17 +4,17 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ProductCard from "../component/ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+
+import { productAction } from "../redux/actions/productAction";
 
 const ProductsAll = () => {
-  const [productsList, setProductsList] = useState([]);
-  const [query, setQuery] = useSearchParams()
-  const getProducts = async () => {
-    let searchQuery = query.get('q') || ""
-    let url = `https://my-json-server.typicode.com/hodooha/hnm-website-practice/products?q=${searchQuery}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log("data", data);
-    setProductsList(data);
+  const productList = useSelector((state) => state.product.productList);
+  const [query, setQuery] = useSearchParams();
+  const dispatch = useDispatch();
+  const getProducts = () => {
+    let searchQuery = query.get("q") || "";
+    dispatch(productAction.getProducts(searchQuery));
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const ProductsAll = () => {
     <div>
       <Container>
         <Row>
-          {productsList.map((item) => (
+          {productList.map((item) => (
             <Col lg={3}>
               <ProductCard item={item}></ProductCard>
             </Col>

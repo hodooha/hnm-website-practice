@@ -5,16 +5,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { productAction } from "../redux/actions/productAction";
 
 const ProductDetail = () => {
   let { id } = useParams();
-  const [product, setProduct] = useState(null);
+  let dispatch = useDispatch();
+  let product = useSelector((state) => state.product.product);
 
   const getProductDetail = async () => {
-    let url = `https://my-json-server.typicode.com/hodooha/hnm-website-practice/products/${id}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    setProduct(data);
+    dispatch(productAction.getProductDetail(id));
+    console.log("1단계");
   };
 
   useEffect(() => {

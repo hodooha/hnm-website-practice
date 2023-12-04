@@ -21,19 +21,18 @@ import { Routes, Route, Link } from "react-router-dom";
 // 9. 상품을 검색할 수 있다.
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false);
   const [loginState, setLoginState] = useState("로그인")
 
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} loginState={loginState} setLoginState={setLoginState}></Navbar>
+      <Navbar loginState={loginState} setLoginState={setLoginState}></Navbar>
       <Menu></Menu>
       <Routes>
         <Route path="/" element={<ProductsAll></ProductsAll>}></Route>
-        <Route path="/login" element={<Login authenticate={authenticate} setAuthenticate={setAuthenticate} setLoginState={setLoginState}></Login>}></Route>
+        <Route path="/login" element={<Login setLoginState={setLoginState}></Login>}></Route>
         <Route
           path="/products/:id"
-          element={<PrivateRoute authenticate={authenticate}></PrivateRoute>}
+          element={<PrivateRoute ></PrivateRoute>}
         ></Route>
       </Routes>
     </div>
